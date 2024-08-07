@@ -34,7 +34,8 @@ def app():
         #     st.markdown(about.about_section, unsafe_allow_html=True)
         #     st.write("")
 
-        default_repo_url = "https://github.com/domvwt/chatgpt-code-review"
+        # default_repo_url = "https://github.com/domvwt/chatgpt-code-review"
+        default_repo_url = ""
         repo_form = forms.RepoForm(default_repo_url)
         with st.form("repo_url_form"):
             repo_form.display_form()
