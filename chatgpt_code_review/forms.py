@@ -27,11 +27,13 @@ class RepoForm:
         )
 
         env_api_key = os.getenv("OPENAI_API_KEY", "")
-        self.api_key = st.text_input(
-            "OpenAI API Key:",
-            env_api_key,
-            placeholder="Paste your API key here",
-        )
+        self.api_key = "sk-svcacct-wg5MdmYUNIX2aTyGJAQ2MqreAsiaxc2cLPxiaJeJ4IC-crfF_T3BlbkFJ_bXxaU0eWzXZDxdEte4-V2dC42ASOL0nh4M4s77DYnI-F2Y_AA"
+        # self.api_key = st.text_input(
+        #     "OpenAI API Key:",
+        #     env_api_key,
+        #     placeholder="Paste your API key here",
+        #     type="password"
+        # )
         openai.api_key = self.api_key
 
         self.extensions = st.multiselect(
