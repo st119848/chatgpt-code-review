@@ -95,6 +95,9 @@ Use the following response format, keeping the section headings as-is, and provi
 your feedback. Use bullet points for each response. The provided examples are for
 illustration purposes only and should not be repeated. 
 
+**Score of the code from 10 (example)**:
+- 9 
+
 **Syntax and logical errors (example)**:
 - Incorrect indentation on line 12
 - Missing closing parenthesis on line 23
