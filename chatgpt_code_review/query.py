@@ -2,7 +2,11 @@ import logging
 from textwrap import dedent
 from typing import Iterable
 
-import openai
+from openai import OpenAI
+client = OpenAI(
+    base_url = 'https://llmapi.opencodelab.asia/v1',
+    api_key='ollama', # required, but unused
+)
 import streamlit as st
 import tiktoken
 
@@ -118,6 +122,10 @@ illustration purposes only and should not be repeated.
 - Add meaningful comments and documentation to explain the code
 - Follow consistent naming conventions for variables and functions
 
+**Final Code After Fix (example)**:
+- This is the code after you help fixing it and make the code has 10 score from 10
+ 
+
 Code:
 ```
 {code}
@@ -125,7 +133,7 @@ Code:
 
 Your review:"""
     )
-    messages = [{"role": "system", "content": prompt}]
+    messages = [{"role": "system", "content": "You are a helpful assistant."},{"role": "user", "content": prompt}]
     tokens_in_messages = get_num_tokens_from_messages(
         messages=messages, model="gpt-3.5-turbo"
     )
@@ -137,16 +145,22 @@ Your review:"""
 
     logging.info("Sending request to OpenAI API for code analysis")
     logging.info("Max response tokens: %d", tokens_for_response)
-    response = openai.ChatCompletion.create(
-        model="gpt-3.5-turbo",
-        messages=messages,
-        max_tokens=tokens_for_response,
-        n=1,
-        temperature=0,
-    )
+    # response = openai.ChatCompletion.create(
+    #     model="gpt-3.5-turbo",
+    #     messages=messages,
+    #     max_tokens=tokens_for_response,
+    #     n=1,
+    #     temperature=0,
+    # )
+    print("messages Object:", messages)
+    response = client.chat.completions.create(
+  model="llama3.1:8b",
+   messages=messages,
+)
     logging.info("Received response from OpenAI API")
-
+    print("Received response from OpenAI API")
+    print("Response Object:", response)
     # Get the assistant's response from the API response
-    assistant_response = response.choices[0].message["content"]
-
+    assistant_response = response.choices[0].message.content
+    print(assistant_response)
     return assistant_response.strip()

@@ -8,7 +8,7 @@ packages = [{include = "chatgpt_code_review"}]
 
 [tool.poetry.dependencies]
 python = ">=3.9.0,<3.11,!=3.9.7"
-openai = "^0.27.2"
+openai = "1.4.0"
 gitpython = "^3.1.31"
 streamlit = "^1.20.0"
 streamlit-tree-select = "^0.0.5"
